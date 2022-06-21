@@ -1,0 +1,21 @@
+.box {
+  text-align: center;
+  h1 {
+    font-size: 76px;
+  }
+  p {
+    font-size: 26px;
+    font-weight: bold;
+  }
+  input,
+  button {
+    padding: 20px;
+    font-size: 26px;
+    border-radius: 10px;
+    border: solid 1px #333;
+  }
+  button {
+    font-size: 32px;
+    text-transform: uppercase;
+  }
+}

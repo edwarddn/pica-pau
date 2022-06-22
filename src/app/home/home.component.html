@@ -1,7 +1,12 @@
 <div class="box">
   <h1>Pica Pau</h1>
   <p>Digite o seu CPF</p>
-  <input [(ngModel)]="cpf" placeholder="Digite o seu CPF" type="text" />
+  <input
+    [(ngModel)]="cpf"
+    placeholder="Digite o seu CPF"
+    type="text"
+    maxlength="14"
+  />
   <p>
     Result: <span>{{ cpf }}</span>
   </p>

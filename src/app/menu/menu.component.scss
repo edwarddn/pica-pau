@@ -1,0 +1,32 @@
+.menuzinho {
+  margin: 30px auto;
+  font-size: 22px;
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    li {
+      border: solid 1px #ccc;
+      border-right: none;
+      list-style: none;
+      display: inline-block;
+      margin: 0;
+      &:last-child {
+        border-right: solid 1px #ccc;
+      }
+    }
+  }
+  a {
+    display: block;
+    padding: 5px 10px;
+
+    color: rgb(13, 110, 253);
+    text-decoration: none;
+    &:hover {
+      background-color: #ccc;
+      color: #333;
+    }
+  }
+}

@@ -5,6 +5,24 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.box {
+  text-align: center;
+
+  p {
+    font-weight: bold;
+  }
+  button {
+    padding: 6px;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  hr {
+    border: none;
+    border-top: solid 1px #333;
+  }
+}
+
 .form-box {
   margin: 0 auto;
   padding: 10px 0;

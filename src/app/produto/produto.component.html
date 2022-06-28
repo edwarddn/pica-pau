@@ -1,1 +1,35 @@
-<p>produto works!</p>
+<div class="box">
+  <p>Cadastro de Produto</p>
+  <form class="form-box" [formGroup]="form" (ngSubmit)="cadastrar()">
+    <input
+      formControlName="nome"
+      placeholder="Nome"
+      type="text"
+      maxlength="64"
+    />
+    <input
+      formControlName="valor"
+      placeholder="Valor"
+      type="text"
+      maxlength="15"
+    />
+    <button type="submit" [disabled]="!form.valid">Cadastrar</button>
+  </form>
+  <hr />
+
+  <table class="tabelinha">
+    <tr>
+      <th>Nome</th>
+      <th>Valor</th>
+      <th>Ações</th>
+    </tr>
+    <tr *ngFor="let cliente of list">
+      <td>{{ cliente.nome }}</td>
+      <td>{{ cliente.valor | currency: "USD" }}</td>
+      <td>
+        <button (click)="editar(cliente)">Editar</button>
+        <button (click)="remover(cliente)">Remover</button>
+      </td>
+    </tr>
+  </table>
+</div>

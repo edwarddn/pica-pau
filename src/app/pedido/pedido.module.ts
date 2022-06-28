@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProdutoComponent } from './produto.component';
+import { PedidoComponent } from './pedido.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [ProdutoComponent],
+  declarations: [PedidoComponent],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
 })
-export class ProdutoModule {}
+export class PedidoModule {}

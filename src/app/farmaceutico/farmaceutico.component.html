@@ -1,1 +1,27 @@
-<p>farmaceutico works!</p>
+<div class="box">
+  <p>Cadastro de Fornecedor</p>
+  <button (click)="cegonha()">Cegonha</button>
+  <p>Fornecedores</p>
+  <table class="tabelinha">
+    <tr>
+      <th>Nome</th>
+      <th>CPF</th>
+      <th>CPF Válido</th>
+      <th>Data de Nascimento</th>
+      <th>Idade</th>
+      <th>Oferta do Dia</th>
+      <th>Ações</th>
+    </tr>
+    <tr *ngFor="let item of lista">
+      <td>{{ item.nome }}</td>
+      <td>{{ item.documento }}</td>
+      <td>{{ item.documentoValido }}</td>
+      <td>{{ item.niver | date: "dd/MM/yyyy" }}</td>
+      <td>{{ item.idade }}</td>
+      <td>{{ item.ofertaDia }}</td>
+      <td>
+        <button (click)="remover(item)">Remover</button>
+      </td>
+    </tr>
+  </table>
+</div>

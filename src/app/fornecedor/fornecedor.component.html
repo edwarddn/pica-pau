@@ -20,6 +20,28 @@
     />
     <button type="submit">Cadastrar</button>
   </form>
-  <p>Result: {{ form.getRawValue() | json }}</p>
-  <p>Form é valido? {{ form.valid ? "Sim" : "Não" }}</p>
+  <hr />
+  <button (click)="cegonha()">Cegonha</button>
+  <p>Fornecedores</p>
+  <table class="tabelinha">
+    <tr>
+      <th>Nome</th>
+      <th>CNPJ</th>
+      <th>CNPJ Válido</th>
+      <th>Data de Nascimento</th>
+      <th>Idade</th>
+      <th>Ações</th>
+    </tr>
+    <tr *ngFor="let item of fornecedores">
+      <td>{{ item.nome }}</td>
+      <td>{{ item.documento }}</td>
+      <td>{{ item.documentoValido }}</td>
+      <td>{{ item.niver | date: "dd/MM/yyyy" }}</td>
+      <td>{{ item.idade }}</td>
+      <td>
+        <button>Editar</button>
+        <button (click)="remover(item)">Remover</button>
+      </td>
+    </tr>
+  </table>
 </div>

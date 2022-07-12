@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Farmaceutico } from '../domain/farmaceutico';
+import {FarmaceuticoModel} from "../model/farmaceutico-model";
 
 @Injectable({
   providedIn: 'root',
@@ -11,15 +12,15 @@ export class FarmaceuticoService {
 
   constructor(private http: HttpClient) {}
 
-  cegonha(): Observable<Farmaceutico> {
-    return this.http.post<Farmaceutico>(this.url + 'cadastrar-random', {});
+  cegonha(): Observable<FarmaceuticoModel> {
+    return this.http.post<FarmaceuticoModel>(this.url + 'cadastrar-random', {});
   }
 
-  consultar(): Observable<Farmaceutico[]> {
-    return this.http.get<Farmaceutico[]>(this.url + 'consultar');
+  consultar(): Observable<FarmaceuticoModel[]> {
+    return this.http.get<FarmaceuticoModel[]>(this.url + 'consultar');
   }
 
-  excluir(id: string): Observable<Farmaceutico> {
-    return this.http.delete<Farmaceutico>(this.url + 'remover/' + id);
+  excluir(id: string): Observable<FarmaceuticoModel> {
+    return this.http.delete<FarmaceuticoModel>(this.url + 'remover/' + id);
   }
 }

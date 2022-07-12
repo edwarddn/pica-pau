@@ -58,7 +58,7 @@ export class PedidoComponent implements OnInit {
 
   private consultarClientes(): void {
     this.clienteService.consultar().subscribe((x) => {
-      this.clientes = x;
+      //this.clientes = x;
     });
   }
 

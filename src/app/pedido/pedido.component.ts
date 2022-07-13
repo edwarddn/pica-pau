@@ -1,7 +1,4 @@
-import { Produto } from './../domain/produto';
-import { Farmaceutico } from './../domain/farmaceutico';
 import { PedidoService } from './../service/pedido.service';
-import { Pedido } from './../domain/pedido';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -9,10 +6,13 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Cliente } from '../domain/cliente';
 import { ClienteService } from '../service/cliente.service';
 import { FarmaceuticoService } from '../service/farmaceutico.service';
 import { ProdutoService } from '../service/produto.service';
+import { PedidoModel } from "../model/pedido-model";
+import { ClienteModel } from "../model/cliente-model";
+import { FarmaceuticoModel } from "../model/farmaceutico-model";
+import { ProdutoModel } from "../model/produto-model";
 
 @Component({
   selector: 'app-pedido',
@@ -20,10 +20,10 @@ import { ProdutoService } from '../service/produto.service';
   styleUrls: ['./pedido.component.scss'],
 })
 export class PedidoComponent implements OnInit {
-  pedidos: Pedido[] = [];
-  clientes: Cliente[] = [];
-  farmaceuticos: Farmaceutico[] = [];
-  produtos: Produto[] = [];
+  pedidos: PedidoModel[] = [];
+  clientes: ClienteModel[] = [];
+  farmaceuticos: FarmaceuticoModel[] = [];
+  produtos: ProdutoModel[] = [];
 
   form: FormGroup = this.formBuilder.group({
     idCliente: new FormControl('', [Validators.required]),
@@ -58,13 +58,13 @@ export class PedidoComponent implements OnInit {
 
   private consultarClientes(): void {
     this.clienteService.consultar().subscribe((x) => {
-      //this.clientes = x;
+      this.clientes = x;
     });
   }
 
   private consultarFarmaceuticos(): void {
     this.farmaceuticoService.consultar().subscribe((x) => {
-      //this.farmaceuticos = x;
+      this.farmaceuticos = x;
     });
   }
 
@@ -80,14 +80,14 @@ export class PedidoComponent implements OnInit {
       const idFarmaceutico = this.form.controls['idFarmaceutico'].value;
       this.pedidoService
         .cadastrar(idCliente, idFarmaceutico)
-        .subscribe((pedido: Pedido) => {
+        .subscribe((pedido: PedidoModel) => {
           this.pedidos.push(pedido);
           this.resetForm();
         });
     }
   }
 
-  clickAddProduto(pedido: Pedido) {
+  clickAddProduto(pedido: PedidoModel) {
     this.formAddProduto.controls['idPedido'].setValue(pedido.id);
   }
 

@@ -1,5 +1,4 @@
 import { ProdutoModel } from './../model/produto-model';
-import { Produto } from './../domain/produto';
 import { ProdutoService } from './../service/produto.service';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -15,7 +14,7 @@ import {
   styleUrls: ['./produto.component.scss'],
 })
 export class ProdutoComponent implements OnInit {
-  list: Produto[] = [];
+  list: ProdutoModel[] = [];
 
   form: FormGroup = this.formBuilder.group({
     id: new FormControl(null),
@@ -33,7 +32,7 @@ export class ProdutoComponent implements OnInit {
   }
 
   private carregaTabela(): void {
-    this.produtoService.consultar().subscribe((domains: Produto[]) => {
+    this.produtoService.consultar().subscribe((domains: ProdutoModel[]) => {
       this.list = domains;
     });
   }
@@ -42,14 +41,14 @@ export class ProdutoComponent implements OnInit {
     const id = this.form.controls['id'].value;
     const model: ProdutoModel = this.form.getRawValue();
     if (id) {
-      this.produtoService.alterar(id, model).subscribe((domain: Produto) => {
+      this.produtoService.alterar(model).subscribe((domain: ProdutoModel) => {
         if (domain.id) {
           this.carregaTabela();
           this.form.reset();
         }
       });
     } else {
-      this.produtoService.cadastrar(model).subscribe((domain: Produto) => {
+      this.produtoService.cadastrar(model).subscribe((domain: ProdutoModel) => {
         if (domain.id) {
           this.list.push(domain);
           this.form.reset();
@@ -58,14 +57,14 @@ export class ProdutoComponent implements OnInit {
     }
   }
 
-  editar(produto: Produto): void {
+  editar(produto: ProdutoModel): void {
     this.form.controls['id'].setValue(produto.id);
     this.form.controls['nome'].setValue(produto.nome);
     this.form.controls['valor'].setValue(produto.valor);
   }
 
-  remover(produto: Produto): void {
-    this.produtoService.remover(produto.id).subscribe((c: Produto) => {
+  remover(produto: ProdutoModel): void {
+    this.produtoService.remover(produto.id).subscribe((c: ProdutoModel) => {
       if (c.id) {
         this.carregaTabela();
       }
